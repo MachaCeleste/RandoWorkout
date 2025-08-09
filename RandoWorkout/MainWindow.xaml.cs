@@ -275,7 +275,7 @@ namespace RandoWorkout
             ClearBacklog();
             WriteOBSLog();
             UpdateViewModel();
-            ConsoleClear("Backlog Cleared!");
+            ConsoleClear("Log Cleared!");
         }
         #endregion
     }
