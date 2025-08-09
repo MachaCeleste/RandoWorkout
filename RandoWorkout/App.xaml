@@ -1,7 +1,7 @@
-﻿<Application x:Class="RanoWorkout.App"
+﻿<Application x:Class="RandoWorkout.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:RanoWorkout"
+             xmlns:local="clr-namespace:RandoWorkout"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

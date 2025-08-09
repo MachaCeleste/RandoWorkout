@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace RanoWorkout
+namespace RandoWorkout
 {
     /// <summary>
     /// Interaction logic for App.xaml
