@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RandoWorkout"
         mc:Ignorable="d"
-        Title="Randomizer Exerciser" Height="220" Width="550" ResizeMode="NoResize">
+        Title="Randomizer Exerciser" Height="230" Width="550" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
