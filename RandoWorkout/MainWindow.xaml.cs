@@ -9,7 +9,7 @@ namespace RandoWorkout
     public partial class MainWindow : Window
     {
         public ViewModelHelper ViewModel { get; }
-        public string SavePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location)?.CompanyName);
+        public string SavePath;
 
         private int UnneededItems = 0;
         private int Rupees = 0;
@@ -27,6 +27,8 @@ namespace RandoWorkout
         public MainWindow()
         {
             InitializeComponent();
+            FileVersionInfo fileInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
+            SavePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), fileInfo.CompanyName, fileInfo.ProductName);
             ViewModel = new ViewModelHelper { ConsoleOutput = "" };
             DataContext = ViewModel;
             var loadCheck = LoadLog();
@@ -60,9 +62,7 @@ namespace RandoWorkout
         private void WriteOBSLog()
         {
             if (!File.Exists(SavePath))
-            {
                 Directory.CreateDirectory(SavePath);
-            }
             var filePath = Path.Combine(SavePath, "OBSLog.txt");
             var output = $"Unneeded Items: {UnneededItems}            Squats: {BacklogSquats}/{Squats}\n" +
                          $"        Rupees: {Rupees}             Curls: {BacklogCurls}/{Curls}\n" +
