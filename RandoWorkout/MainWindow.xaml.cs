@@ -159,20 +159,23 @@ namespace RandoWorkout
                     };
                     break;
             }
+            var loot = LootPicker(Weights);
+            AddExercise(loot.Key);
+            WriteOBSLog();
+            UpdateViewModel();
+            ConsolePrint($"You owe 5 {loot.Key}!");
+        }
+
+        private KeyValuePair<Exercise, int> LootPicker(Dictionary<Exercise, int> lootTable)
+        {
             Random rng = new Random(Guid.NewGuid().GetHashCode());
-            int totalWeight = Weights.Values.Sum();
+            int totalWeight = lootTable.Values.Sum();
             int roll = rng.Next(0, totalWeight);
-            foreach (var kvp in Weights)
+            foreach (var kvp in lootTable)
             {
                 roll -= kvp.Value;
                 if (roll < 0)
-                {
-                    AddExercise(kvp.Key);
-                    WriteOBSLog();
-                    UpdateViewModel();
-                    ConsolePrint($"You owe 5 {kvp.Key}!");
-                    return;
-                }
+                    return kvp;
             }
             throw new InvalidOperationException("Invalid loot weights!");
         }
