@@ -159,8 +159,8 @@ namespace RandoWorkout
                     Weights = new Dictionary<Exercise, int>
                     {
                         { Exercise.Curls, 50 },
-                        { Exercise.Squats, 25 },
-                        { Exercise.Shrugs, 15 },
+                        { Exercise.Squats, 20 },
+                        { Exercise.Shrugs, 20 },
                         { Exercise.Overhead_Press, 10 }
                     };
                     break;
