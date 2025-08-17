@@ -114,13 +114,12 @@ namespace RandoWorkout
         }
 
         #region Generation
-        private void GenExercise(int type)
+        private void GenExercise(Exercise type)
         {
             Dictionary<Exercise, int> Weights;
             switch (type)
             {
-                case 1:
-                    //Favor curls
+                case Exercise.Curls:
                     Weights = new Dictionary<Exercise, int>
                     {
                         { Exercise.Curls, 70 },
@@ -129,8 +128,7 @@ namespace RandoWorkout
                         { Exercise.Overhead_Press, 10 }
                     };
                     break;
-                case 2:
-                    //Favor squats
+                case Exercise.Squats:
                     Weights = new Dictionary<Exercise, int>
                     {
                         { Exercise.Curls, 10 },
@@ -139,8 +137,16 @@ namespace RandoWorkout
                         { Exercise.Overhead_Press, 10 }
                     };
                     break;
-                case 3:
-                    //Favor overhead_press
+                case Exercise.Shrugs:
+                    Weights = new Dictionary<Exercise, int>
+                    {
+                        { Exercise.Curls, 10 },
+                        { Exercise.Squats, 10 },
+                        { Exercise.Shrugs, 70 },
+                        { Exercise.Overhead_Press, 10 }
+                    };
+                    break;
+                case Exercise.Overhead_Press:
                     Weights = new Dictionary<Exercise, int>
                     {
                         { Exercise.Curls, 10 },
@@ -225,6 +231,7 @@ namespace RandoWorkout
 
         private enum Exercise
         {
+            None,
             Squats,
             Curls,
             Shrugs,
@@ -236,25 +243,25 @@ namespace RandoWorkout
         private void AddUI_Click(object sender, RoutedEventArgs e)
         {
             UnneededItems++;
-            GenExercise(0);
+            GenExercise(Exercise.None);
         }
 
         private void AddR_Click(object sender, RoutedEventArgs e)
         {
             Rupees++;
-            GenExercise(1);
+            GenExercise(Exercise.Curls);
         }
 
         private void AddHP_Click(object sender, RoutedEventArgs e)
         {
             HeartPieces++;
-            GenExercise(2);
+            GenExercise(Exercise.Squats);
         }
 
         private void AddSC_Click(object sender, RoutedEventArgs e)
         {
             SeaCharts++;
-            GenExercise(3);
+            GenExercise(Exercise.Overhead_Press);
         }
 
         private void Reset_Click(object sender, RoutedEventArgs e)
